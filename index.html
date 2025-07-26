@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Lecteur Doc Word (iPad Mini)</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.18/mammoth.browser.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>📖 Lecteur de Documents Word</h2>
+
+    <select id="chapitre-select" class="btn-select">
+        <option value="">-- Choisis un chapitre --</option>
+        <option value="docs/chapitres_traduits1/Chapitres_1-5.docx">Chapitres 1-5</option>
+        <option value="docs/chapitres_traduits1/Chapitres_6-10.docx">Chapitres 6-10</option>
+        <option value="docs/chapitres_traduits1/Chapitres_11-15.docx">Chapitres 11-15</option>
+        <option value="docs/chapitres_traduits1/Chapitres_16-20.docx">Chapitres 16-20</option>
+        <option value="docs/chapitres_traduits1/Chapitres_21-25.docx">Chapitres 21-25</option>
+        <option value="docs/chapitres_traduits1/Chapitres_26-30.docx">Chapitres 26-30</option>
+        <option value="docs/chapitres_traduits1/Chapitres_31-35.docx">Chapitres 31-35</option>
+        <option value="docs/chapitres_traduits1/Chapitres_36-40.docx">Chapitres 36-40</option>
+        <option value="docs/chapitres_traduits1/Chapitres_41-45.docx">Chapitres 41-45</option>
+        <option value="docs/chapitres_traduits1/Chapitres_46-50.docx">Chapitres 46-50</option>
+        <option value="docs/chapitres_traduits1/Chapitres_51-55.docx">Chapitres 51-55</option>
+        <option value="docs/chapitres_traduits1/Chapitres_56-60.docx">Chapitres 56-60</option>
+        <option value="docs/chapitres_traduits1/Chapitres_61-65.docx">Chapitres 61-65</option>
+    </select>
+
+    <button onclick="chargerChapitre()">Afficher le chapitre</button>
+
+    <div id="doc-display" class="doc-display">
+        Aucun document sélectionné.
+    </div>
+</div>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>
