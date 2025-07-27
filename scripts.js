@@ -1,50 +1,76 @@
-const fileInput = document.getElementById('file-input');
 const docDisplay = document.getElementById('doc-display');
+const dossierSelect = document.getElementById('dossier-select');
 const chapitreSelect = document.getElementById('chapitre-select');
 
-// Événement bouton pour ouvrir la sélection fichier
-document.querySelector('.btn-select').addEventListener('click', () => {
-    fileInput.click();
-});
+const dossiers = {
+    'chapitres_traduits1': [
+        'Chapitres_1-5.docx',
+        'Chapitres_6-10.docx',
+        'Chapitres_11-15.docx',
+        'Chapitres_16-20.docx',
+        'Chapitres_21-25.docx',
+        'Chapitres_26-30.docx',
+        'Chapitres_31-35.docx',
+        'Chapitres_36-40.docx',
+        'Chapitres_41-45.docx',
+        'Chapitres_46-50.docx',
+        'Chapitres_51-55.docx',
+        'Chapitres_56-60.docx',
+        'Chapitres_61-65.docx'
+    ],
+    'chapitres_traduits2': [
+        'Chapitres_1-5.docx',
+        'Chapitres_6-10.docx',
+        'Chapitres_11-15.docx',
+        'Chapitres_16-20.docx',
+        'Chapitres_21-25.docx',
+        'Chapitres_26-30.docx',
+        'Chapitres_31-35.docx',
+        'Chapitres_36-40.docx',
+        'Chapitres_41-45.docx',
+        'Chapitres_46-50.docx',
+        'Chapitres_51-55.docx',
+        'Chapitres_56-60.docx',
+        'Chapitres_61-65.docx',
+        'Chapitres_66-70.docx',
+        'Chapitres_71-75.docx',
+        'Chapitres_76-80.docx',
+        'Chapitres_81-85.docx',
+        'Chapitres_86-90.docx',
+        'Chapitres_91-95.docx',
+        'Chapitres_96-100.docx'
+    ]
+};
 
-// Charger document depuis l'ordinateur local (si utilisé)
-fileInput.addEventListener('change', function(event) {
-    const file = event.target.files[0];
-
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = function(loadEvent) {
-            mammoth.convertToHtml({arrayBuffer: loadEvent.target.result})
-                .then(result => {
-                    docDisplay.innerHTML = result.value;
-                })
-                .catch(err => {
-                    docDisplay.innerHTML = `<span style="color:red;">Erreur: ${err.message}</span>`;
-                });
-        };
-
-        reader.readAsArrayBuffer(file);
-    } else {
-        docDisplay.textContent = "Aucun document sélectionné.";
+function remplirChapitres() {
+    chapitreSelect.innerHTML = '<option value="">-- Choisis un chapitre --</option>';
+    const dossier = dossierSelect.value;
+    if (dossier && dossiers[dossier]) {
+        dossiers[dossier].forEach(fichier => {
+            const option = document.createElement('option');
+            option.value = `docs/${dossier}/${fichier}`;
+            option.textContent = fichier.replace('Chapitres_', 'Chapitres ').replace('.docx', '');
+            chapitreSelect.appendChild(option);
+        });
     }
-});
+}
 
-// NOUVELLE FONCTION : Charger depuis les chapitres du serveur directement
+dossierSelect.addEventListener('change', remplirChapitres);
+
 function chargerChapitre() {
     const fichier = chapitreSelect.value;
 
-    if (fichier === "") {
+    if (fichier === '') {
         alert("Sélectionne d'abord un chapitre !");
         return;
     }
 
     fetch(fichier)
         .then(response => {
-            if (!response.ok) throw new Error("Erreur lors du chargement du document");
+            if (!response.ok) throw new Error('Erreur lors du chargement du document');
             return response.arrayBuffer();
         })
-        .then(arrayBuffer => mammoth.convertToHtml({arrayBuffer: arrayBuffer}))
+        .then(arrayBuffer => mammoth.convertToHtml({ arrayBuffer }))
         .then(result => {
             docDisplay.innerHTML = result.value;
         })
