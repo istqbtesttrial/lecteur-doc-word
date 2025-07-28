@@ -61,6 +61,28 @@ const dossiers = {
         'Chapitres_86-90.docx',
         'Chapitres_91-95.docx',
         'Chapitres_96-100.docx'
+    ],
+    'chapitres_traduits4': [
+        'Chapitres_1-5.docx',
+        'Chapitres_6-10.docx',
+        'Chapitres_11-15.docx',
+        'Chapitres_16-20.docx',
+        'Chapitres_21-25.docx',
+        'Chapitres_26-30.docx',
+        'Chapitres_31-35.docx',
+        'Chapitres_36-40.docx',
+        'Chapitres_41-45.docx',
+        'Chapitres_46-50.docx',
+        'Chapitres_51-55.docx',
+        'Chapitres_56-60.docx',
+        'Chapitres_61-65.docx',
+        'Chapitres_66-70.docx',
+        'Chapitres_71-75.docx',
+        'Chapitres_76-80.docx',
+        'Chapitres_81-85.docx',
+        'Chapitres_86-90.docx',
+        'Chapitres_91-95.docx',
+        'Chapitres_96-100.docx'
     ]
 };
 
